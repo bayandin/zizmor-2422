@@ -1,0 +1,16 @@
+name: Verify single-quoted expression
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify expression value
+        run: test "$FOO" = foo
+        env:
+          FOO: '${{ ''foo'' }}'
